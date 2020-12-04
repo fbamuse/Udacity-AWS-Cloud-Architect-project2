@@ -8,6 +8,7 @@ data "archive_file" "sample_function" {
   source_dir  = "./src"
   output_path = "./output/lambda_function.zip"
 }
+
 resource "aws_lambda_function" "test_function" {
   filename         = data.archive_file.sample_function.output_path
   function_name    = "test_function"
@@ -35,3 +36,4 @@ resource "aws_iam_role" "iam_for_lambda" {
   ]
 }
 EOF
+}
